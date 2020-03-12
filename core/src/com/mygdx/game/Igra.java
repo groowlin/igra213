@@ -22,9 +22,11 @@ public class Igra extends ApplicationAdapter {
 
 	Texture lico;
 	Music mainTheme;
+	Sound shouting;
 
 	Rectangle licoM;
 	Vector3 touchPos;
+	int k =0;
 	
 	@Override
 	public void create () {
@@ -36,6 +38,7 @@ public class Igra extends ApplicationAdapter {
 		batch = new SpriteBatch();
 		lico = new Texture("lico.png");
 		mainTheme = Gdx.audio.newMusic(Gdx.files.internal("MainTheme.mp3"));
+		shouting = Gdx.audio.newSound(Gdx.files.internal("vopl.mp3"));
 
 		mainTheme.setLooping(true);
 		mainTheme.play();
@@ -53,6 +56,11 @@ public class Igra extends ApplicationAdapter {
 	public void render () {
 		Gdx.gl.glClearColor(25,33,0.2f,1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+		k++;
+		if(k%300 == 0){
+			shouting.play();
+		}
 
 		camera.update();
 
