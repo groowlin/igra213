@@ -24,9 +24,11 @@ public class Igra extends ApplicationAdapter {
 	Music mainTheme;
 
 	Rectangle licoM;
+	Vector3 touchPos;
 	
 	@Override
 	public void create () {
+		touchPos = new Vector3();
 
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false,1920,1080);
@@ -60,7 +62,7 @@ public class Igra extends ApplicationAdapter {
 		batch.end();
 
 		if(Gdx.input.isTouched()){
-			Vector3 touchPos = new Vector3();
+
 			touchPos.set(Gdx.input.getX(),Gdx.input.getY(),0);
 			camera.unproject(touchPos);
 			licoM.x = (int) (touchPos.x - 276/2);
